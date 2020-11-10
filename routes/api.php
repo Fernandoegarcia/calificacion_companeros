@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/usuario/registrar', [UsuarioController::class, 'store' ]);
 Route::get('/usuario/main', [UsuarioController::class, 'index']);
-#Route::put('/usuario/actualizar', [UsuarioController::class, 'update' ]);
+Route::put('/usuario/actualizar', [UsuarioController::class, 'update' ]);
 Route::delete('/usuario/eliminar', [UsuarioController::class, 'delete' ]);
