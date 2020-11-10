@@ -55,7 +55,8 @@ class UsuarioController extends Controller
 
     public function index(){
 
-        return(new Usuario())->paginate();
+        $colecion = (new Usuario())->paginate();
 
+        return $colecion;
     }
 }
