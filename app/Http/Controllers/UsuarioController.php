@@ -16,10 +16,13 @@ class UsuarioController extends Controller
 
         ]);
 
+        #$usu= $request->input('usuario_id');
+        #$usu->join('');
+
         $usuario = new Usuario();
 
         $usuario->fill(
-            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo')
+            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad','usuario_id')
         );
 
         $usuario->save();
@@ -37,8 +40,7 @@ class UsuarioController extends Controller
 
 
         $usuario->update(
-            $request->merge(['tipo'=>'empleado'])->only('nombre','cargo','fecha_nacimiento','tipo', 'sexo', 'edad')
-        );
+            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad','usuario_id')        );
 
         return $usuario;
 
