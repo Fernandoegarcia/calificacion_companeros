@@ -25,7 +25,6 @@ class UsuarioController extends Controller
 
 
 
-
         $usuario = new Usuario();
 
         $usuario->fill(
@@ -53,6 +52,7 @@ class UsuarioController extends Controller
 
         ]);
 
+        $email = $request->user()->email;
 
         $usuario->update(
             $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad')
@@ -87,8 +87,11 @@ class UsuarioController extends Controller
                 'email' => ['email o password incorrecto'],
             ]);
         }else {
+
             echo $resultado;
         }
+
+        return $user->createToken($request->email)->plainTextToken;
 
     }
 
