@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAptitudesTable extends Migration
+class CreateUsuarioAptitudTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateAptitudesTable extends Migration
      */
     public function up()
     {
-        Schema::create('aptitudes', function (Blueprint $table) {
-
-            $table->id('id');
-            $table->text('aptitudes');
+        Schema::create('usuario__aptitud', function (Blueprint $table) {
+            $table->integer('usuario_id');
+            $table->integer('aptitud_id');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateAptitudesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aptitudes');
+        Schema::dropIfExists('usuario__aptitud');
     }
 }
