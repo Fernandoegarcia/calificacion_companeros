@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\UserController;
+use App\Models\Usuario;
 use App\Http\Controllers\AptitudController;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,10 @@ Route::post('/usuario/registrar', [UsuarioController::class, 'store' ]);
 Route::get('/usuario/main', [UsuarioController::class, 'index']);
 Route::put('/usuario/actualizar', [UsuarioController::class, 'update' ]);
 Route::delete('/usuario/eliminar', [UsuarioController::class, 'delete' ]);
-Route::post('/usuario/aptitudes', [AptitudController::class, 'store']);
+
+// Route::post('/usuario/aptitudes', [AptitudController::class, 'store']);
 Route::get('/usuario/aptitudes', [AptitudController::class, 'index']);
-Route::put('/usuario/aptitudes/update',[AptitudController::class], 'update');
+Route::put('/usuario/aptitudes/update',[AptitudController::class, 'store']);
 
 Route :: group ( [ 'middleware'  =>  'auth:sanctum' ] ,  function ( ) {
 
