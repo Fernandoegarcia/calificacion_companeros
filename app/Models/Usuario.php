@@ -11,4 +11,9 @@ class Usuario extends Model
     protected $table = 'usuarios';
     public $timestamps = False;
     protected $fillable = ['nombre', 'cargo','sexo', 'edad','fecha_nacimiento', 'usuario_id'];
+
+    public function relacion()
+    {
+        return $this->belongsToMany('App\Models\Aptitud');
+    }
 }

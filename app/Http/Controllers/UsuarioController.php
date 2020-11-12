@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Usuario as UsuarioResource;
+use App\Http\Resources\UsuarioResource;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -57,6 +57,6 @@ class UsuarioController extends Controller
 
         #$colecion = (new Usuario())->paginate();
 
-        return UsuarioResource::collection(Usuario::all());
+        return  UsuarioResource::collection(Usuario::all());
     }
 }

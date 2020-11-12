@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Apitud extends Model
 {
     use HasFactory;
+    protected $fillable = ['aptitudes'];
+
 }
