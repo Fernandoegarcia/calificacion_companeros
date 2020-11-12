@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Apitud extends Model
+class Aptitud extends Model
 {
     use HasFactory;
     protected $fillable = ['aptitudes'];
+    protected $table = 'aptitudes';
 
 }

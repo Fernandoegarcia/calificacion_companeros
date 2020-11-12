@@ -26,7 +26,6 @@ class CreateUsuariosTable extends Migration
             $table->date('fecha_nacimiento');
             $table->text('user_name');
             $table->text('password');
-            $table->integer('aptitud_id');
             $table->timestamps();
         });
     }

@@ -2,22 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Apitud;
+use App\Models\Aptitud;
 use Illuminate\Http\Request;
 
 use function PHPUnit\Framework\returnSelf;
 
-class ApitudController extends Controller
+class AptitudController extends Controller
 {
+    public function index(){
 
-    public function store(Request $request){
+        return Aptitud::all();
+    }
 
-        $validaciones=$request->validate([
+    public function update(Request $request, Aptitud $aptitud){
+
+        $aptitud->update(
+            $request->only('aptitudes')
+        );
+
+        return $aptitud;
+    }
+    public function store(Request $request, Aptitud $aptitud)  {
+
+        $validaciones = $request->validate([
 
             'aptitudes'=>['required']
         ]);
 
-        $aptitud = new Apitud();
+        $aptitud= new Aptitud();
 
         $aptitud->fill(
             $request->only('aptitudes')
@@ -27,6 +39,4 @@ class ApitudController extends Controller
 
         return $aptitud;
     }
-
-
 }

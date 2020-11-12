@@ -13,7 +13,10 @@ class UsuarioController extends Controller
         $validaciones = $request->validate([
             'nombre'=>['required'],
             'cargo'=>['required'],
-            'fecha_nacimiento'=>['required', 'date']
+            'fecha_nacimiento'=>['required', 'date'],
+            'user_name'=>['required'],
+            'password'=>['required']
+
 
         ]);
 
@@ -21,12 +24,14 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
 
         $usuario->fill(
-            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad','usuario_id')
+            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad', 'password')
         );
 
         $usuario->save();
 
         return $usuario;
+
+        $usuario->atach('aptitud_id');
     }
 
     public function update(Request $request, Usuario $usuario)
@@ -39,7 +44,8 @@ class UsuarioController extends Controller
 
 
         $usuario->update(
-            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad','usuario_id')        );
+            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad')
+        );
 
         return $usuario;
 
@@ -49,12 +55,10 @@ class UsuarioController extends Controller
     {
         $usuario->delete();
 
-        return $usuario;
     }
 
     public function index(){
 
-        #$colecion = (new Usuario())->paginate();
 
         return  UsuarioResource::collection(Usuario::all());
     }

@@ -28,8 +28,8 @@ class UsuarioFactory extends Factory
             'edad'=>$this->faker->randomDigit,
             'sexo'=>$this->faker->word,
             'fecha_nacimiento'=>$this->faker->date,
-            'usuario_id'=>$this->faker->randomDigit
-
+            'user_name'=>$this->faker->name,
+            'password'=>$this->faker->randomDigit,
         ];
     }
 }

@@ -10,9 +10,9 @@ class Usuario extends Model
     use HasFactory;
     protected $table = 'usuarios';
     public $timestamps = False;
-    protected $fillable = ['nombre', 'cargo','sexo', 'edad','fecha_nacimiento', 'usuario_id'];
+    protected $fillable = ['nombre', 'cargo','sexo', 'edad','fecha_nacimiento', 'aptitudes'];
 
-    public function relacion()
+    public function aptitudes()
     {
         return $this->belongsToMany('App\Models\Aptitud');
     }
