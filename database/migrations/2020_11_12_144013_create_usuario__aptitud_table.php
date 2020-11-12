@@ -13,7 +13,7 @@ class CreateUsuarioAptitudTable extends Migration
      */
     public function up()
     {
-        Schema::create('usuario__aptitud', function (Blueprint $table) {
+        Schema::create('usuario_aptitud', function (Blueprint $table) {
             $table->integer('usuario_id');
             $table->integer('aptitud_id');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateUsuarioAptitudTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario__aptitud');
+        Schema::dropIfExists('usuario_aptitud');
     }
 }

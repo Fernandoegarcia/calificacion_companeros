@@ -17,9 +17,9 @@ class UsuarioController extends Controller
             'nombre'=>['required'],
             'cargo'=>['required'],
             'fecha_nacimiento'=>['required', 'date'],
-            'user_name'=>['required'],
-            'email' => 'required|email',
-            'password' => 'required|string',
+            'user_name'=>['required','unique:App\Models\Usuario,user_name'],
+            'email' => ['required','email','unique:App\Models\Usuario,email'],
+            'password' => ['required','string','min:8'],
 
         ]);
 
@@ -28,7 +28,7 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
 
         $usuario->fill(
-            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad', 'password', 'user_name')
+            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad', 'password', 'user_name', 'email')
         );
 
         $usuario->save();
@@ -40,31 +40,40 @@ class UsuarioController extends Controller
         $usuario->atach('');
     }
 
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request)
     {
         $validaciones = $request->validate([
             'nombre'=>['required'],
             'cargo'=>['required'],
             'fecha_nacimiento'=>['required', 'date'],
-            'user_name'=>['required'],
-            'password'=>['required'],
-            'email' => 'required|email',
+            'user_name'=>['required','unique:App\Models\Usuario,user_name'],
+            'email' => ['required','email','unique:App\Models\Usuario,email'],
+            'password' => ['required','string','min:8'],
+            'aptitudes'=>['required', 'array', 'min:1'],
+            'aptitudes.*'=>['numeric', 'exists:aptitudes,id']
 
         ]);
 
-        $email = $request->user()->email;
+        $usuario = $request->user();
 
         $usuario->update(
             $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad')
         );
 
+        $usuario->aptitudes()->sync((array)$request->get('aptitudes'));
+
         return $usuario;
+
 
     }
 
-    public function delete(Usuario $usuario)
+    public function delete(Request $request)
     {
+
+        $usuario = $request->user();
+
         $usuario->delete();
+
 
     }
 

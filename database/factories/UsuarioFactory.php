@@ -33,9 +33,8 @@ class UsuarioFactory extends Factory
             'sexo'=>$this->faker->word,
             'fecha_nacimiento'=>$this->faker->date,
             'user_name'=>$this->faker->name,
-            'password'=> Hash::make('12345'),
+            'password'=> Hash::make('123456789'),
             'email'=> 'louisgalmy09@gmail.com',
-
         ];
     }
 }

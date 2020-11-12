@@ -13,8 +13,7 @@ class Usuario extends Model
 {
     use HasFactory, HasApiTokens, Notifiable;
     protected $table = 'usuarios';
-    public $timestamps = False;
-    protected $fillable = ['nombre', 'cargo','sexo', 'edad','fecha_nacimiento', 'aptitudes','user_name', 'password', 'email'];
+    protected $fillable = ['nombre', 'cargo','sexo', 'edad','fecha_nacimiento', 'aptitudes','user_name', 'password', 'email', 'compañia'];
 
     public function aptitudes()
     {
@@ -27,8 +26,10 @@ class Usuario extends Model
      * @var array
      */
     protected $hidden = [
-        //'password',
+        'password',
         'remember_token',
+        'email_verified_at',
+
     ];
 
         /**
