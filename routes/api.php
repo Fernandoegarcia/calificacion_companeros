@@ -32,4 +32,4 @@ Route :: group ( [ 'middleware'  =>  'auth:sanctum' ] ,  function ( ) {
 
 
 } ) ;
-Route :: post ( "User/login" , [ UserController::class , 'index' ] ) ;
+Route :: post ( "User/login" , [ UsuarioController::class , 'login' ] ) ;

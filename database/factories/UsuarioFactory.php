@@ -4,6 +4,10 @@ namespace Database\Factories;
 
 use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Seeder;
+use  Illuminate\Support\Facades\DB;
+use  Illuminate\Support\Facades\Hash;
+
 
 class UsuarioFactory extends Factory
 {
@@ -29,7 +33,9 @@ class UsuarioFactory extends Factory
             'sexo'=>$this->faker->word,
             'fecha_nacimiento'=>$this->faker->date,
             'user_name'=>$this->faker->name,
-            'password'=>$this->faker->randomDigit,
+            'password'=> Hash::make('12345'),
+            'email'=> 'louisgalmy09@gmail.com',
+
         ];
     }
 }
