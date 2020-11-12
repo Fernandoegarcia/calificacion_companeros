@@ -24,7 +24,7 @@ Route::get('/usuario/main', [UsuarioController::class, 'index']);
 Route::put('/usuario/actualizar', [UsuarioController::class, 'update' ]);
 Route::delete('/usuario/eliminar', [UsuarioController::class, 'delete' ]);
 
-// Route::post('/usuario/aptitudes', [AptitudController::class, 'store']);
+Route::post('/usuario/aptitudes', [AptitudController::class, 'store']);
 Route::get('/usuario/aptitudes', [AptitudController::class, 'index']);
 Route::put('/usuario/aptitudes/update',[AptitudController::class, 'store']);
 
@@ -32,4 +32,4 @@ Route :: group ( [ 'middleware'  =>  'auth:sanctum' ] ,  function ( ) {
 
 
 } ) ;
-Route :: post ( "User/login" , [ UserController::class , 'index' ] ) ;
+Route :: post ( "User/login" , [ UsuarioController::class , 'login' ] ) ;
