@@ -17,7 +17,6 @@ class UsuarioController extends Controller
 
         ]);
 
-        $usu= $request->input('usuario_id');
 
         $usuario = new Usuario();
 

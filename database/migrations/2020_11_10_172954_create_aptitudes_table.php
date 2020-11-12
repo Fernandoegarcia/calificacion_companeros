@@ -16,7 +16,6 @@ class CreateAptitudesTable extends Migration
         Schema::create('aptitudes', function (Blueprint $table) {
 
             $table->id('id');
-            $table->text('nombre_usuario');
             $table->text('aptitudes');
             $table->timestamps();
         });
