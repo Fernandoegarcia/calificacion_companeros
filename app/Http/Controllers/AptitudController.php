@@ -14,14 +14,6 @@ class AptitudController extends Controller
         return Aptitud::all();
     }
 
-    public function update(Request $request, Aptitud $aptitud){
-
-        $aptitud->update(
-            $request->only('aptitudes')
-        );
-
-        return $aptitud;
-    }
     public function store(Request $request, Aptitud $aptitud)  {
 
         $validaciones = $request->validate([
@@ -39,4 +31,14 @@ class AptitudController extends Controller
 
         return $aptitud;
     }
+
+    public function update(Request $request, Aptitud $aptitud){
+
+        $aptitud->update(
+            $request->only('aptitudes')
+        );
+
+        return $aptitud;
+    }
+
 }
