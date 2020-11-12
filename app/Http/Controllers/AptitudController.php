@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Aptitud;
 use Illuminate\Http\Request;
 
-use function PHPUnit\Framework\returnSelf;
 
 class AptitudController extends Controller
 {
