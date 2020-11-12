@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Usuario as UsuarioResource;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,7 @@ class UsuarioController extends Controller
 
         ]);
 
-        #$usu= $request->input('usuario_id');
-        #$usu->join('');
+        $usu= $request->input('usuario_id');
 
         $usuario = new Usuario();
 
@@ -55,8 +55,8 @@ class UsuarioController extends Controller
 
     public function index(){
 
-        $colecion = (new Usuario())->paginate();
+        #$colecion = (new Usuario())->paginate();
 
-        return $colecion;
+        return UsuarioResource::collection(Usuario::all());
     }
 }

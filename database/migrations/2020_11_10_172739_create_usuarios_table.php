@@ -25,6 +25,7 @@ class CreateUsuariosTable extends Migration
             $table->enum('tipo', ['empleador','empleado','desempleado']);
             $table->date('fecha_nacimiento');
             $table->integer('usuario_id');
+            $table->integer('aptitud_id');
             $table->timestamps();
         });
     }

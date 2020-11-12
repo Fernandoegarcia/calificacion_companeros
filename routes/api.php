@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\UsuarioController;
-use App\Http\Resources\User as UsuarioResource;
 use App\Models\Usuario;
 
 use Illuminate\Http\Request;
@@ -22,7 +21,4 @@ Route::post('/usuario/registrar', [UsuarioController::class, 'store' ]);
 Route::get('/usuario/main', [UsuarioController::class, 'index']);
 Route::put('/usuario/actualizar', [UsuarioController::class, 'update' ]);
 Route::delete('/usuario/eliminar', [UsuarioController::class, 'delete' ]);
-Route::get('/user', function () {
-    return new UsuarioResource(Usuario::find(1));
-});
 
