@@ -20,6 +20,7 @@ class UsuarioController extends Controller
             'user_name'=>['required','unique:App\Models\Usuario,user_name'],
             'email' => ['required','email','unique:App\Models\Usuario,email'],
             'password' => ['required','string','min:8'],
+            'edad' => ['required', 'min:2']
 
         ]);
 
@@ -50,7 +51,8 @@ class UsuarioController extends Controller
             'email' => ['required','email','unique:App\Models\Usuario,email'],
             'password' => ['required','string','min:8'],
             'aptitudes'=>['required', 'array', 'min:1'],
-            'aptitudes.*'=>['numeric', 'exists:aptitudes,id']
+            'aptitudes.*'=>['numeric', 'exists:aptitudes,id'],
+            'edad' => ['required', 'min:2']
 
         ]);
 

@@ -70,33 +70,35 @@ export default {
         async signup() {
             const credentials = {
 
-                "nombre": this.name,
-                "compañia": this.company,
-                "cargo": this.cargo,
-                "sexo": this.sex,
-                "edad": this.age,
-                "fecha_nacimiento": this.date,
-                "user_name": this.name,
-                "password": this.pwd,
-                "email": this.email
+                "nombre": "this.name",
+                "compañia": "this.company",
+                "cargo":" this.cargo",
+                "sexo": "this.sex",
+                "edad": "18",
+                "fecha_nacimiento": "1999-06-25",
+                "user_name": "this.name",
+                "password": "12345678",
+                "email": "yolo@gmail.com"
 
-            }
+}
 
             console.log(credentials);
 
-            const response = await fetch("http://127.0.0.1:8000/usuario/registrar", {
-                mode: 'cors',
+            const response = fetch("http://127.0.0.1:8000/usuario/registrar", {
+                // mode: 'cors',
                 method: "POST",
                 headers: {
                     "Content-Type": 'application/json',
                     "Accept": 'application/json'
                 },
                 body: JSON.stringify(credentials)
-            });
+            }).then(res => {
+                console.log(res)
+            })
 
-            const text = await response.text();
+            // const text = await response.text();
 
-            console.log(text)
+            // console.log(text)
         }
     },
     data: () => ({
