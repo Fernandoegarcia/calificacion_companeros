@@ -2,7 +2,7 @@
 
 ## TODOS:
 
-- [ ] User Sign Up
+- [X] User Sign Up
 - [ ] User Login
 - [ ] Home feed
 - [ ] etcs
