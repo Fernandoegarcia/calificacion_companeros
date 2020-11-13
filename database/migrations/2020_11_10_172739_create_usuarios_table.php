@@ -25,7 +25,11 @@ class CreateUsuariosTable extends Migration
             $table->enum('tipo', ['empleador','empleado','desempleado']);
             $table->date('fecha_nacimiento');
             $table->text('user_name');
-            $table->text('password');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+
             $table->timestamps();
         });
     }
