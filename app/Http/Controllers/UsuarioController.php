@@ -22,7 +22,7 @@ class UsuarioController extends Controller
             'email' => ['required','email','unique:App\Models\Usuario,email'],
             'password' => ['required','string','min:8'],
             'edad'=>['required', 'min:2'],
-            'tipo'=>['required', Rule::in(['empleador','empleado','desempleado'])]
+            'tipo'=>['required', Rule::in([Usuario::TIPO_EMPLEADOR,Usuario::TIPO_EMPLEADO,Usuario::TIPO_DESEMPLEADO])],
 
         ]);
 
@@ -54,7 +54,7 @@ class UsuarioController extends Controller
             'password' => ['required','string','min:8'],
             'aptitudes'=>['required', 'array', 'min:1'],
             'aptitudes.*'=>['numeric', 'exists:aptitudes,id'],
-            'tipo'=>['required', Rule::in(['empleador','empleado','desempleado'])],
+            'tipo'=>['required', Rule::in([Usuario::TIPO_EMPLEADOR,Usuario::TIPO_EMPLEADO,Usuario::TIPO_DESEMPLEADO])],
             'edad'=>['required', 'min:2']
 
         ]);
