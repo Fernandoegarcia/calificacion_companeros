@@ -24,7 +24,7 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
 
         $usuario->fill(
-            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad', 'password')
+            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad', 'password', 'user_name', 'email')
         );
 
         $usuario->save();
