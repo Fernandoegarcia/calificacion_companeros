@@ -19,6 +19,9 @@ class Usuario extends Model
     {
         return $this->belongsToMany('App\Models\Aptitud');
     }
+    const TIPO_EMPLEADO = 'empleado';
+    const TIPO_EMPLEADOR = 'empleador';
+    const TIPO_DESEMPLEADO = 'desempleado';
 
     /**
      * The attributes that should be hidden for arrays.

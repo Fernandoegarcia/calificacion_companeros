@@ -7,6 +7,7 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rule;
 
 
 class UsuarioController extends Controller
@@ -20,7 +21,8 @@ class UsuarioController extends Controller
             'user_name'=>['required','unique:App\Models\Usuario,user_name'],
             'email' => ['required','email','unique:App\Models\Usuario,email'],
             'password' => ['required','string','min:8'],
-            'edad' => ['required', 'min:2']
+            'edad'=>['required', 'min:2'],
+            'tipo'=>['required', Rule::in([Usuario::TIPO_EMPLEADOR,Usuario::TIPO_EMPLEADO,Usuario::TIPO_DESEMPLEADO])],
 
         ]);
 
@@ -29,7 +31,7 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
 
         $usuario->fill(
-            $request->merge(['tipo'=>'empleado'])->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad', 'password', 'user_name', 'email')
+            $request->only('nombre', 'cargo', 'tipo', 'fecha_nacimiento','compañia','sexo', 'edad', 'password', 'user_name', 'email')
         );
 
         $usuario->save();
@@ -52,7 +54,8 @@ class UsuarioController extends Controller
             'password' => ['required','string','min:8'],
             'aptitudes'=>['required', 'array', 'min:1'],
             'aptitudes.*'=>['numeric', 'exists:aptitudes,id'],
-            'edad' => ['required', 'min:2']
+            'tipo'=>['required', Rule::in([Usuario::TIPO_EMPLEADOR,Usuario::TIPO_EMPLEADO,Usuario::TIPO_DESEMPLEADO])],
+            'edad'=>['required', 'min:2']
 
         ]);
 
