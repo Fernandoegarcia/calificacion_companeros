@@ -1,19 +1,8 @@
-# frontend
+# Frontend
 
-## Project setup
-```
-npm install
-```
+## TODOS:
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [ ] User Sign Up
+- [ ] User Login
+- [ ] Home feed
+- [ ] etcs
