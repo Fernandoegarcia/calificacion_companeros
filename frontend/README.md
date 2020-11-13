@@ -3,6 +3,6 @@
 ## TODOS:
 
 - [X] User Sign Up
-- [ ] User Login
+- [X] User Login
 - [ ] Home feed
 - [ ] etcs

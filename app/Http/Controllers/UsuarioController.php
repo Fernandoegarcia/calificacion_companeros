@@ -93,19 +93,27 @@ class UsuarioController extends Controller
 
 
         $resultado='Logged';
+
         $user = Usuario::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        // echo "$user";
+
+        // echo "yolo";
+
+        if ( $user && $user->password == $request->password ) {
+            return [
+                "code" => 200,
+                "token" => $user->createToken($request->email)->plainTextToken
+            ];
+        }else {
+
             throw ValidationException::withMessages
             ([
                 'email' => ['email o password incorrecto'],
             ]);
-        }else {
-
-            echo $resultado;
         }
 
-        return $user->createToken($request->email)->plainTextToken;
+        
 
     }
 
