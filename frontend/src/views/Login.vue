@@ -37,6 +37,10 @@
 
                 <v-select :items="sexs" v-model="sex" />
 
+                <h2>Type:</h2>
+
+                <v-select :items="types" v-model="type" />
+
                 <h2>Age:</h2>
 
                 <v-text-field type="number" />
@@ -68,37 +72,45 @@
 export default {
     methods: {
         async signup() {
-            const credentials = {
 
-                "nombre": "this.name",
-                "compañia": "this.company",
-                "cargo":" this.cargo",
-                "sexo": "this.sex",
-                "edad": "18",
-                "fecha_nacimiento": "1999-06-25",
-                "user_name": "this.name",
-                "password": "12345678",
-                "email": "yolo@gmail.com"
+            if (this.pwd.length == 8) {
+                const credentials = {
 
-}
+                "nombre": this.name,
+                "compañia": this.company,
+                "cargo": this.cargo,
+                "sexo": this.sex,
+                "edad": this.age,
+                "fecha_nacimiento": this.date,
+                "user_name": this.name,
+                "password": this.pwd,
+                "email": this.email,
+                "tipo": this.type
+
+            }
 
             console.log(credentials);
 
-            const response = fetch("http://127.0.0.1:8000/usuario/registrar", {
-                // mode: 'cors',
+            const response = await fetch("http://127.0.0.1:8000/usuario/registrar", {
+                mode: 'cors',
                 method: "POST",
                 headers: {
                     "Content-Type": 'application/json',
                     "Accept": 'application/json'
                 },
                 body: JSON.stringify(credentials)
-            }).then(res => {
-                console.log(res)
-            })
+            });
 
-            // const text = await response.text();
+            const json = await response.json();
 
-            // console.log(text)
+            console.log(json)
+            } else {
+                alert("Password must be 8 characters at least")
+            }
+        },
+
+        async login() {
+
         }
     },
     data: () => ({
@@ -110,7 +122,9 @@ export default {
         email: "",
         pwd: "",
         age: 18,
-        date: ""
+        date: "",
+        types: ['empleador', 'empleado', 'desempleado'],
+        type: ''
     })
 }
 </script>
