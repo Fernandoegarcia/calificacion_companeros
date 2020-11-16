@@ -61,10 +61,6 @@
                     Sign Up
                 </v-btn>
 
-
-                <v-btn color="primary">
-                    Login
-                </v-btn>
             </div>
         </v-row>
 
