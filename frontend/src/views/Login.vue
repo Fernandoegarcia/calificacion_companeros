@@ -1,9 +1,11 @@
 <template>
     <div>
         <v-toolbar color="green accent-4">
+            <v-spacer />
             <v-toolbar-title>
                 Login
             </v-toolbar-title>
+            <v-spacer />
         </v-toolbar>
 
         <v-row justify="center" align-content="center">
@@ -58,7 +60,17 @@ export default {
                 body: JSON.stringify(credentials)
             });
 
+            // console.log(response)
+
             const json = await response.json();
+            
+            if (response.status >= 400) {
+                alert(json.message)
+            } else {
+                localStorage.setItem("token", json.token.split("|")[1]);
+                location.href = '#/'
+            }
+
 
             console.log(json)
 

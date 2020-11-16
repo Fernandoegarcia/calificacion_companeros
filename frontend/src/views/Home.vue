@@ -14,3 +14,16 @@
 
   </div>
 </template>
+
+<script>
+export default {
+  created() {
+    const token = localStorage.token;
+
+    if (!token) {
+      location.href = '#/login';
+    }
+
+  }
+}
+</script>
